@@ -30,18 +30,26 @@ class Deck{
 		//returns the amount of cards currently stored
 	}
 	shuffle(){
+		for(cardIndex = 0; cardIndex < this.deck.length; cardIndex++){
+			var shuffledArray = this.deck.splice(Math.floor(Math.random()) * this.deck.length - 1, 1);
+		}
+		this.deck = shuffledArray;
+
 		//reorders the cards in the storage array in a random order
 		//takes in nothing
 		//returns nothing
 	}
 	getCardCount(){
+		var cardAmount = this.deck.length;
+		return cardAmount
 		//gets the current amount of cards stored
 		//takes in nothing
 		//returns the amount of cards stored in the array in the constructor
 	}
-	dealCards(  ){
+	dealCards( amount ){
 		//deals out a number of cards
 		//takes in the number of cards to deal
+		
 		//removes that many cards from the deck
 		//returns an array with that many cards in it
 		//cannot return more cards than the deck has
