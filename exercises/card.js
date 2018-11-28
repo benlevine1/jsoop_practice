@@ -15,12 +15,15 @@ class Card{
 class Deck{
 	constructor(){
 		//takes in nothing
+		this.deck = [];
 		//make storage for your card objects
 	}
 	addCard( suite, faceValue ){
 		//adds a card to the deck
 		//takes in a string suite and faceValue
+		var card = new Card (suite, faceValue);
 		//makes a new card Object from the Card template
+		
 		//adds the card object to the storage in the constructor
 		//returns the amount of cards currently stored
 	}
