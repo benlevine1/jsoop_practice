@@ -1,11 +1,11 @@
 
 class Card{
-	constructor(suit, faceValue){
-		this.suit = suit;
+	constructor(suite, faceValue){
+		this.suite = suite;
 		this.faceValue = faceValue;
 	}
-	getSuit(){
-		return this.suit;
+	getSuite(){
+		return this.suite;
 	}
 	getFaceValue(){
 		return this.faceValue;
@@ -18,11 +18,11 @@ class Deck{
 		this.deck = [];
 		//make storage for your card objects
 	}
-	addCard( suit, faceValue ){
+	addCard( suite, faceValue ){
 		//adds a card to the deck
 		//takes in a string suit and faceValue
-		var card = new Card(suit, faceValue);
-		this.deck.push(card);
+		var card = new Card(suite, faceValue);
+		this.deck.unshift(card);
 		return this.deck.length;
 		//makes a new card Object from the Card template
 		
@@ -30,8 +30,9 @@ class Deck{
 		//returns the amount of cards currently stored
 	}
 	shuffle(){
-		for(cardIndex = 0; cardIndex < this.deck.length; cardIndex++){
-			var shuffledArray = this.deck.splice(Math.floor(Math.random()) * this.deck.length - 1, 1);
+		var shuffledArray = this.deck.slice(0, this.deck.length - 1);
+		for(var cardIndex = 0; cardIndex < shuffledArray.length; cardIndex++){
+			shuffledArray[cardIndex] = this.deck.splice(Math.floor(Math.random()) * this.deck.length - 1, 1)[0];
 		}
 		this.deck = shuffledArray;
 
@@ -49,7 +50,13 @@ class Deck{
 	dealCards( amount ){
 		//deals out a number of cards
 		//takes in the number of cards to deal
-		
+		var dealtCards;
+		if (amount > this.deck.length){
+			dealtCards = this.deck.splice(0, this.deck.length-1);
+		}else{
+			dealtCards = this.deck.splice(0, amount);
+		}
+		return dealtCards;
 		//removes that many cards from the deck
 		//returns an array with that many cards in it
 		//cannot return more cards than the deck has
